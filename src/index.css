@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #101410;
+  --color-field: #163028;
+  --color-pine: #1b6b43;
+  --color-lime: #e2ff4d;
+  --color-ember: #c43212;
+  --color-sand: #f3f0e8;
+  --color-paper: #fbfaf6;
+  --font-display: "Oswald", sans-serif;
+  --font-sans: "Outfit", sans-serif;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  scrollbar-width: none
+}
+
+body {
+  @apply bg-paper font-sans text-ink antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: #e2ff4d;
+  color: #101410;
+}
+
+:focus-visible {
+  outline: 2px solid #e2ff4d;
+  outline-offset: 3px;
+}
+
+article[id],
+section[id] {
+  scroll-margin-top: 5.5rem;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes ken {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-marquee {
+  animation: marquee 36s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+.animate-ken {
+  animation: ken 18s ease-in-out infinite alternate;
+}
+
+.animate-rise {
+  animation: rise 0.55s ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
